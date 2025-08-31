@@ -62,6 +62,12 @@ int Array::find(char target) {
     return -1;
 }
 
+void Array::fill(char el) {
+    for (int i = 0; i < m_cur_size; i++) {
+        m_data[i] = el;
+    }
+}
+
 char & Array::operator [] (unsigned int index) {
     return m_data[index];
 }

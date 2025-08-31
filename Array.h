@@ -17,6 +17,8 @@ class Array {
         void shrink();
         int find(char target);
 
+        void fill(char el);
+
         char & operator [] (unsigned int index);
         const char & operator [] (unsigned int index) const;
         
