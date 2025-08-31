@@ -18,6 +18,7 @@ class Array {
         int find(char target);
 
         char & operator [] (unsigned int index);
+        const char & operator [] (unsigned int index) const;
 
     private:
         char * m_data;

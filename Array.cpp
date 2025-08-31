@@ -66,6 +66,10 @@ char & Array::operator [] (unsigned int index) {
     return m_data[index];
 }
 
+const char & Array::operator [] (unsigned int index) const {
+    return m_data[index];
+}
+
 void Array::reallocate_(unsigned int length) {
     char * temp = new char[length];
 
