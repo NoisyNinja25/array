@@ -25,11 +25,25 @@ Array::Array(unsigned int length, char fill) {
     }
 }
 
-unsigned int Array::get_size() {
+Array::Array(const Array & arr) {
+    m_cur_size = arr.get_size();
+    m_max_size = arr.get_max_size();
+    m_data = new char[m_cur_size];
+
+    for (int i = 0; i < m_cur_size; i++) {
+        m_data[i] = arr.get_element(i);
+    }
+}
+
+Array::~Array() {
+    delete [] m_data;
+}
+
+unsigned int Array::get_size() const {
     return m_cur_size;
 }
 
-unsigned int Array::get_max_size() {
+unsigned int Array::get_max_size() const {
     return m_max_size;
 }
 
@@ -37,7 +51,7 @@ void Array::set_element(unsigned int index, char el) {
     m_data[index] = el;
 }
 
-char Array::get_element(unsigned int index) {
+char Array::get_element(unsigned int index) const {
     return m_data[index];
 }
 

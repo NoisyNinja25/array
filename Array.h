@@ -6,11 +6,13 @@ class Array {
         Array();
         Array(unsigned int length);
         Array(unsigned int length, char fill);
+        Array(const Array & arr);
+        ~Array();
 
-        unsigned int get_size();
-        unsigned int get_max_size();
+        unsigned int get_size() const;
+        unsigned int get_max_size() const;
 
-        char get_element(unsigned int index);
+        char get_element(unsigned int index) const;
         void set_element(unsigned int index, char el);
 
         void resize(unsigned int length);
