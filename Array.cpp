@@ -62,12 +62,15 @@ int Array::find(char target) {
     return -1;
 }
 
+char & Array::operator [] (unsigned int index) {
+    return m_data[index];
+}
+
 void Array::reallocate_(unsigned int length) {
     char * temp = new char[length];
 
     for (int i = 0; i < m_cur_size; i++) {
         temp[i] = m_data[i];
-        std::cout << temp[i] << std::endl;
     }
 
     delete [] m_data;

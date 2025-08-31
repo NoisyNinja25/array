@@ -17,6 +17,8 @@ class Array {
         void shrink();
         int find(char target);
 
+        char & operator [] (unsigned int index);
+
     private:
         char * m_data;
         unsigned int m_cur_size;
