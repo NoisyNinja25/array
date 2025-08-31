@@ -70,6 +70,26 @@ const char & Array::operator [] (unsigned int index) const {
     return m_data[index];
 }
 
+bool Array::operator == (Array & rhs) const {
+    if (&rhs == this) {
+        return true;
+    }
+
+    if (m_cur_size == rhs.get_size()) {
+        for (int i = 0; i < m_cur_size; i++) {
+            if (m_data[i] != rhs.get_element(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
+bool Array::operator != (Array & rhs) const {
+    return !(*this == rhs);
+}
+
 void Array::reallocate_(unsigned int length) {
     char * temp = new char[length];
 
