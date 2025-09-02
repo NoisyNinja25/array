@@ -36,7 +36,7 @@ Array::Array(const Array & arr) {
 }
 
 Array::~Array() {
-    delete [] m_data;
+   delete [] m_data;
 }
 
 unsigned int Array::get_size() const {
@@ -79,6 +79,21 @@ int Array::find(char target) {
 void Array::fill(char el) {
     for (int i = 0; i < m_cur_size; i++) {
         m_data[i] = el;
+    }
+}
+
+void Array::reverse() {
+    unsigned int head = 0;
+    unsigned int mid = m_cur_size / 2;
+    unsigned int tail = m_cur_size - 1;
+
+    while (head < mid) {
+        char temp = m_data[tail];
+        m_data[tail] = m_data[head];
+        m_data[head] = temp;
+
+        head++;
+        tail--;
     }
 }
 

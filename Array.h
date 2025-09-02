@@ -21,6 +21,11 @@ class Array {
 
         void fill(char el);
 
+        void reverse();
+
+        Array slice(unsigned int begin) const;
+        Array slice(unsigned int begin, unsigned int end) const;
+
         char & operator [] (unsigned int index);
         const char & operator [] (unsigned int index) const;
         
