@@ -17,7 +17,7 @@ class Array {
 
         void resize(unsigned int length);
         void shrink();
-        int find(char target);
+        int find(char target) const;
 
         void fill(char el);
 

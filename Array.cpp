@@ -97,6 +97,22 @@ void Array::reverse() {
     }
 }
 
+Array Array::slice(unsigned int begin) const {
+    return slice(begin, m_cur_size);
+}
+
+Array Array::slice(unsigned int begin, unsigned int end) const {
+    unsigned int length = end - begin;
+    Array arr = Array(length);
+
+    for (int i = 0; i < length; i++) {
+        char el = m_data[begin + i];
+        arr.set_element(i, el);
+    } 
+
+    return arr;
+}
+
 char & Array::operator [] (unsigned int index) {
     return m_data[index];
 }
