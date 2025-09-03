@@ -1,5 +1,6 @@
 #include "Array.h"
 #include <iostream>
+#include <stdexcept>
 
 Array::Array() {
     m_cur_size = 0;
@@ -48,10 +49,16 @@ unsigned int Array::get_max_size() const {
 }
 
 void Array::set_element(unsigned int index, char el) {
+    if (index > m_cur_size) {
+        throw std::out_of_range("Index out of range.");
+    }
     m_data[index] = el;
 }
 
 char Array::get_element(unsigned int index) const {
+    if (index > m_cur_size) {
+        throw std::out_of_range("Index out of range.");
+    }
     return m_data[index];
 }
 
@@ -100,10 +107,17 @@ void Array::reverse() {
 }
 
 Array Array::slice(unsigned int begin) const {
+    if (begin > m_cur_size) {
+        throw std::out_of_range("Index out of range.");
+    }
     return slice(begin, m_cur_size);
 }
 
 Array Array::slice(unsigned int begin, unsigned int end) const {
+    if (begin > m_cur_size || end > m_cur_size) {
+        throw std::out_of_range("Index out of range.");
+    }
+
     unsigned int length = end - begin;
     Array arr = Array(length);
 
