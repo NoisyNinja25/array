@@ -3,3 +3,6 @@ build:
 
 run: Array
 	./Array
+
+clean:
+	rm *.gch *.out Array
