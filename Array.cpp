@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
+
 Array::Array() {
     m_cur_size = 0;
     m_max_size = 0;
@@ -9,12 +10,14 @@ Array::Array() {
     m_data = nullptr;
 }
 
+
 Array::Array(unsigned int length) {
     m_cur_size = length;
     m_max_size = length;
     
     m_data = new char[length];
 }
+
 
 Array::Array(unsigned int length, char fill) {
     m_cur_size = length;
@@ -26,6 +29,7 @@ Array::Array(unsigned int length, char fill) {
     }
 }
 
+
 Array::Array(const Array & arr) {
     m_cur_size = arr.get_size();
     m_max_size = arr.get_max_size();
@@ -36,17 +40,21 @@ Array::Array(const Array & arr) {
     }
 }
 
+
 Array::~Array() {
    delete [] m_data;
 }
+
 
 unsigned int Array::get_size() const {
     return m_cur_size;
 }
 
+
 unsigned int Array::get_max_size() const {
     return m_max_size;
 }
+
 
 void Array::set_element(unsigned int index, char el) {
     if (index > m_cur_size) {
@@ -55,12 +63,14 @@ void Array::set_element(unsigned int index, char el) {
     m_data[index] = el;
 }
 
+
 char Array::get_element(unsigned int index) const {
     if (index > m_cur_size) {
         throw std::out_of_range("Index out of range.");
     }
     return m_data[index];
 }
+
 
 void Array::resize(unsigned int length) {
     if (length > m_max_size) {
@@ -70,9 +80,11 @@ void Array::resize(unsigned int length) {
     }
 }
 
+
 void Array::shrink() {
     reallocate_(m_cur_size);
 }
+
 
 int Array::find(char target) const {
     for (int i = 0; i < m_cur_size; i++) {
@@ -84,12 +96,12 @@ int Array::find(char target) const {
 }
 
 
-
 void Array::fill(char el) {
     for (int i = 0; i < m_cur_size; i++) {
         m_data[i] = el;
     }
 }
+
 
 void Array::reverse() {
     unsigned int head = 0;
@@ -106,12 +118,14 @@ void Array::reverse() {
     }
 }
 
+
 Array Array::slice(unsigned int begin) const {
     if (begin > m_cur_size) {
         throw std::out_of_range("Index out of range.");
     }
     return slice(begin, m_cur_size);
 }
+
 
 Array Array::slice(unsigned int begin, unsigned int end) const {
     if (begin > m_cur_size || end > m_cur_size) {
@@ -129,13 +143,16 @@ Array Array::slice(unsigned int begin, unsigned int end) const {
     return arr;
 }
 
+
 char & Array::operator [] (unsigned int index) {
     return m_data[index];
 }
 
+
 const char & Array::operator [] (unsigned int index) const {
     return m_data[index];
 }
+
 
 const Array Array::operator = (const Array & rhs) {
     m_cur_size = rhs.get_size();
@@ -150,6 +167,7 @@ const Array Array::operator = (const Array & rhs) {
 
     return *this;
 }
+
 
 bool Array::operator == (const Array & rhs) const {
     if (&rhs == this) {
@@ -167,9 +185,11 @@ bool Array::operator == (const Array & rhs) const {
     return false;
 }
 
+
 bool Array::operator != (const Array & rhs) const {
     return !(*this == rhs);
 }
+
 
 void Array::reallocate_(unsigned int length) {
     char * temp = new char[length];
