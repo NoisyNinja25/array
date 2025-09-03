@@ -28,9 +28,11 @@ class Array {
 
         char & operator [] (unsigned int index);
         const char & operator [] (unsigned int index) const;
+
+        const Array operator = (const Array & rhs);
         
-        bool operator == (Array & rhs) const;
-        bool operator != (Array & rhs) const;
+        bool operator == (const Array & rhs) const;
+        bool operator != (const Array & rhs) const;
 
     private:
         char * m_data;

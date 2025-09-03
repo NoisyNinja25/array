@@ -67,7 +67,7 @@ void Array::shrink() {
     reallocate_(m_cur_size);
 }
 
-int Array::find(char target) {
+int Array::find(char target) const {
     for (int i = 0; i < m_cur_size; i++) {
         if (m_data[i] == target) {
             return i;
@@ -75,6 +75,8 @@ int Array::find(char target) {
     }
     return -1;
 }
+
+
 
 void Array::fill(char el) {
     for (int i = 0; i < m_cur_size; i++) {
@@ -121,7 +123,21 @@ const char & Array::operator [] (unsigned int index) const {
     return m_data[index];
 }
 
-bool Array::operator == (Array & rhs) const {
+const Array Array::operator = (const Array & rhs) {
+    m_cur_size = rhs.get_size();
+    m_max_size = rhs.get_max_size();
+
+    delete [] m_data;
+    m_data = new char[m_cur_size];
+
+    for (int i = 0; i < m_cur_size; i++) {
+        m_data[i] = rhs.get_element(i);
+    }
+
+    return *this;
+}
+
+bool Array::operator == (const Array & rhs) const {
     if (&rhs == this) {
         return true;
     }
@@ -137,7 +153,7 @@ bool Array::operator == (Array & rhs) const {
     return false;
 }
 
-bool Array::operator != (Array & rhs) const {
+bool Array::operator != (const Array & rhs) const {
     return !(*this == rhs);
 }
 
